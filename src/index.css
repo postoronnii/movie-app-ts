@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .bg-main-dark {
+    @apply bg-[#232323];
+  }
+  .bg-main-gray {
+    @apply bg-[#888888];
+  }
+  .bg-custom-image {
+    background-image: url('/src/images/bg.png');
+    filter: blur(8px) brightness(0.5);
+  }
+}
