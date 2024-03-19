@@ -34,9 +34,9 @@ export default function Movie() {
   }, [])
 
   const genres_edited = movie?.genres.join(', ')
-  const runtime_edited = `${Math.floor(movie?.runtime / 60)}h ${
-    movie?.runtime % 60
-  }min`
+  const runtime_edited = movie?.runtime
+    ? `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}min`
+    : ''
 
   return (
     <div>
@@ -75,11 +75,6 @@ export default function Movie() {
           )}
         </div>
       </div>
-      {/* <main className="bg-main-dark">
-        <div className="bg-main-gray h-2"></div>
-        <Menu genres={movies} />
-        <Movies />
-      </main> */}
       <Footer />
     </div>
   )
