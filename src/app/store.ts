@@ -1,13 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './counterSlice'
+import genresReducer from './genresSlice'
+import addMovieReducer from './addMovieSlice'
+import submitModalReducer from './submitModalSlice'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    genres: genresReducer,
+    addMovie: addMovieReducer,
+    submitModal: submitModalReducer,
   },
 })
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
