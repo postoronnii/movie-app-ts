@@ -1,8 +1,21 @@
 import { SetStateAction, useState } from 'react'
-// import bgImage from '/src/images/bg.png'
 import SearchForm from '../../elements/search-form/SearchForm'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../app/store'
+import { closeModal, openModal } from '../../../app/addMovieSlice'
 
 export default function Header() {
+  const modal = useSelector((state: RootState) => state.addMovie.value)
+  const dispatch = useDispatch()
+
+  const setAddMovieModalOpen = (isOpen: boolean) => {
+    if (isOpen) {
+      dispatch(openModal())
+    } else {
+      dispatch(closeModal())
+    }
+  }
+
   const [value, setValue] = useState('')
 
   const onChange = (e: {
@@ -25,7 +38,10 @@ export default function Header() {
           <p className="text-red-600 text-2xl font-bold">
             Netflix<span className="font-light">Roulette</span>
           </p>
-          <button className="text-red-600 text-xl bg-gray-600 px-3 py-2 bg-opacity-60">
+          <button
+            className="text-red-600 text-xl bg-gray-600 px-3 py-2 bg-opacity-60 rounded-sm"
+            onClick={() => setAddMovieModalOpen(!modal)}
+          >
             + ADD MOVIE
           </button>
         </div>

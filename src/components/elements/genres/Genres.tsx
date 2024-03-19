@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../app/store'
 
-export default function Genres({ genres }: { genres: string[] }) {
+export default function Genres() {
+  const genres = useSelector((state: RootState) => state.genres)
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null)
 
   return (
